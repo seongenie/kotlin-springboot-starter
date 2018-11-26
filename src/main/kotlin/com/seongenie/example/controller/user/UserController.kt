@@ -1,4 +1,4 @@
-package com.seongenie.example.controller.baseCoin
+package com.seongenie.example.controller.user
 
 import com.seongenie.example.collector.exchange.cryptopia.Upbit
 import com.seongenie.example.domain.BaseCoin

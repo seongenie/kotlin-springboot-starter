@@ -1,4 +1,4 @@
-package com.seongenie.example.controller.baseCoin
+package com.seongenie.example.controller.user
 
 import com.seongenie.example.domain.User
 import org.springframework.beans.BeanUtils

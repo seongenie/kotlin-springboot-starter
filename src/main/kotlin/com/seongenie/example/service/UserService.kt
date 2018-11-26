@@ -1,11 +1,10 @@
 package com.seongenie.example.service
 
-import com.seongenie.example.controller.baseCoin.UserResponse
-import com.seongenie.example.controller.baseCoin.UserView
+import com.seongenie.example.controller.user.UserResponse
+import com.seongenie.example.controller.user.UserView
 import com.seongenie.example.domain.User
 import com.seongenie.example.domain.UserRepository
 import com.seongenie.example.domain.infra.BaseService
-import com.seongenie.example.infra.BaseException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

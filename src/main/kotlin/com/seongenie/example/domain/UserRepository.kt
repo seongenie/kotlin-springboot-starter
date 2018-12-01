@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root
 class UserRepository : BaseRepository<User>() {
 
   /**
-   * userId로 user 검색 (equal)
+   * find user by userId
    */
   fun findUserByUserId(userId: String): User {
     var query: CriteriaQuery<User> = builder.createQuery(User::class.java)
@@ -24,7 +24,7 @@ class UserRepository : BaseRepository<User>() {
   }
 
   /**
-   * username 으로 user 목록 검색 (like)
+   * find users by username
    */
   fun findUsersByUsername(username: String): List<User> {
     var query: CriteriaQuery<User> = builder.createQuery(User::class.java)

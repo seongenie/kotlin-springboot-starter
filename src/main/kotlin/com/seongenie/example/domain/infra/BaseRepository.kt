@@ -12,7 +12,8 @@ import javax.persistence.criteria.Root
 
 
 /**
- * BaseRepository
+ * Abstract class includes basic CRUD methods
+ * @see EntityManager
  */
 abstract class BaseRepository<T> {
   @PersistenceContext
@@ -21,18 +22,34 @@ abstract class BaseRepository<T> {
   var type: Class<T> = getGenericClassType() as Class<T>
   val builder get() = entityManager.criteriaBuilder
 
+  /**
+   * add the entity instance
+   * @param entity  entity instance
+   */
   open fun add(entity: Any?) {
     entityManager.persist(entity)
   }
 
+  /**
+   * update the entity instance
+   * @param entity  entity instance
+   */
   open fun update(entity: Any?) {
     entityManager.merge(entity)
   }
 
+  /**
+   * Remove the entity instance.
+   * @param entity  entity instance
+   */
   open fun remove(entity: Any?) {
     entityManager.remove(entity);
   }
 
+  /**
+   * find one entity by id
+   * @param id  entity's id
+   */
   open fun findById(id: Long) : T? {
     var query : CriteriaQuery<T> = builder.createQuery(type)
     var root : Root<T> = query.from(type)
@@ -44,6 +61,9 @@ abstract class BaseRepository<T> {
     return resultList[0]
   }
 
+  /**
+   * find all entities
+   */
   open fun findAll(): List<T> {
     val builder = entityManager.criteriaBuilder
     var query = builder.createQuery(type)
@@ -53,7 +73,10 @@ abstract class BaseRepository<T> {
     return q.resultList
   }
 
-
+  /**
+   * get generic Type's class instance
+   * @return type class instance
+   */
   private fun getGenericClassType(): Type {
     var type = javaClass.genericSuperclass
     while (type !is ParameterizedType) {

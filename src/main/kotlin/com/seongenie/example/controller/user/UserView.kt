@@ -8,6 +8,8 @@ class UserView : Serializable {
   lateinit var userId: String
   lateinit var username: String
 
+  constructor()
+
   constructor(user: User) {
     BeanUtils.copyProperties(user, this)
   }

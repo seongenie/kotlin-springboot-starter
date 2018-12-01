@@ -12,6 +12,5 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 @EntityScan(basePackages = ["com.seongenie.example.domain"])
 class KotlinApplication
 fun main(args: Array<String>) {
-//    var context : ConfigurableApplicationContext =
     SpringApplication.run(KotlinApplication::class.java, *args)
 }

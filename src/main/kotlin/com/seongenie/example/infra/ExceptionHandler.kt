@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-@ControllerAdvice
-class ExceptionHandler {
-
-    @ExceptionHandler(Exception::class)
-    fun handle(ex: Exception, request: HttpServletRequest, response: HttpServletResponse) : ResponseEntity<Any> {
-        return if(ex is NullPointerException) ResponseEntity(HttpStatus.BAD_REQUEST) else ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
-    }
-}
+//@ControllerAdvice
+//class ExceptionHandler {
+//
+//    @ExceptionHandler(Exception::class)
+//    fun handle(ex: Exception, request: HttpServletRequest, response: HttpServletResponse) : ResponseEntity<Any> {
+//        return if(ex is NullPointerException) ResponseEntity(HttpStatus.BAD_REQUEST) else ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
+//    }
+//}

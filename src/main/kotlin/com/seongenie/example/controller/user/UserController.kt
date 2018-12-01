@@ -1,33 +1,54 @@
 package com.seongenie.example.controller.user
 
-import com.seongenie.example.collector.exchange.cryptopia.Upbit
-import com.seongenie.example.domain.BaseCoin
 import com.seongenie.example.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1")
 class UserController {
 
   @Autowired
   lateinit var userService: UserService
 
-  @RequestMapping(value = ["/users/{username}"], method = [RequestMethod.GET])
-  fun getUserList(username: String): UserView {
-    return userService.getUserList(username)
+
+  /**
+   * return users filtered by username
+   */
+  @RequestMapping(value = ["/users"], method = [RequestMethod.GET])
+  fun getUsers(@RequestParam("username") username: String): List<UserView> {
+    return userService.getUsers(username)
   }
 
-  @RequestMapping(value = ["/user/{userId}"], method = [RequestMethod.GET])
-  fun getUser(@PathVariable("userId") userId: String): List<String> {
-    return userService.getUser(userId)
+  /**
+   * return all users
+   */
+  @RequestMapping(value = ["/users/all"], method = [RequestMethod.GET])
+  fun getAllUsers(): List<UserView> {
+    return userService.getAllUsers()
   }
 
+  /**
+   * return one user specified by userId
+   */
+  @RequestMapping(value = ["/user"], method = [RequestMethod.GET])
+  fun getUser(@RequestBody userView: UserView): UserView {
+    return userService.getUser(userView.userId)
+  }
+
+  /**
+   * return one user specified by entity id
+   */
+  @RequestMapping(value = ["/user/{id}"], method = [RequestMethod.GET])
+  fun getUser(@PathVariable("id") id: Long): UserView? {
+    return userService.getUser(id)
+  }
+
+  /**
+   *
+   */
   @RequestMapping(value = ["/user"], method = [RequestMethod.POST])
-  fun getUser(userView: UserView) {
+  fun createUser(@RequestBody userView: UserView) {
     userService.createUser(userView)
   }
 }

@@ -15,7 +15,7 @@ class UserController {
   /**
    * return users filtered by username
    */
-  @RequestMapping(value = ["/users"], method = [RequestMethod.GET])
+  @RequestMapping(value = "/users", method = [RequestMethod.GET])
   fun getUsers(@RequestParam("username") username: String): List<UserView> {
     return userService.getUsers(username)
   }
@@ -23,7 +23,7 @@ class UserController {
   /**
    * return all users
    */
-  @RequestMapping(value = ["/users/all"], method = [RequestMethod.GET])
+  @RequestMapping(value = "/users/all", method = [RequestMethod.GET])
   fun getAllUsers(): List<UserView> {
     return userService.getAllUsers()
   }
@@ -31,7 +31,7 @@ class UserController {
   /**
    * return one user specified by userId
    */
-  @RequestMapping(value = ["/user"], method = [RequestMethod.GET])
+  @RequestMapping(value = "/user", method = [RequestMethod.GET])
   fun getUser(@RequestBody userView: UserView): UserView {
     return userService.getUser(userView.userId)
   }
@@ -39,7 +39,7 @@ class UserController {
   /**
    * return one user specified by entity id
    */
-  @RequestMapping(value = ["/user/{id}"], method = [RequestMethod.GET])
+  @RequestMapping(value = "/user/{id}", method = [RequestMethod.GET])
   fun getUser(@PathVariable("id") id: Long): UserView? {
     return userService.getUser(id)
   }
@@ -47,7 +47,7 @@ class UserController {
   /**
    *
    */
-  @RequestMapping(value = ["/user"], method = [RequestMethod.POST])
+  @RequestMapping(value = "/user", method = [RequestMethod.POST])
   fun createUser(@RequestBody userView: UserView) {
     userService.createUser(userView)
   }

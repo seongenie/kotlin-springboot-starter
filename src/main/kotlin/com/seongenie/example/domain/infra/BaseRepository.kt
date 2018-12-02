@@ -1,5 +1,6 @@
 package com.seongenie.example.domain.infra
 
+import org.springframework.stereotype.Repository
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 import javax.persistence.EntityManager
@@ -15,6 +16,7 @@ import javax.persistence.criteria.Root
  * Abstract class includes basic CRUD methods
  * @see EntityManager
  */
+@Repository
 abstract class BaseRepository<T> {
   @PersistenceContext
   protected open lateinit var entityManager: EntityManager

@@ -1,15 +1,19 @@
 package com.seongenie.example.collector.naver
 
-data class NaverSearchResult(
-        var title: String? = null,
-        var link: String? = null,
-        var description: String? = null,
-        var lastBuildDate: String? = null,
-        var total: String? = null,
-        var start: String? = null,
-        var display: String? = null,
-        var item: List<NaverStoreView>? = null
-)
+import com.google.gson.annotations.SerializedName
+import com.seongenie.example.domain.naver.NaverStore
+import java.io.Serializable
+
+data class NaverSearchResult (
+        @SerializedName("title") var title: String? = null,
+        @SerializedName("link") var link: String? = null,
+        @SerializedName("description") var description: String? = null,
+        @SerializedName("lastBuildDate") var lastBuildDate: String? = null,
+        @SerializedName("total") var total: Int? = null,
+        @SerializedName("start") var start: Int? = null,
+        @SerializedName("display") var display: Int? = null,
+        @SerializedName("items") var items: List<NaverStore>? = null
+): Serializable
 
 
 //<title>Naver Open API - local ::'갈비집'</title>

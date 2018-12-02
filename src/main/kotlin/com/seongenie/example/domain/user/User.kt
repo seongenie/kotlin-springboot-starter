@@ -1,4 +1,4 @@
-package com.seongenie.example.domain
+package com.seongenie.example.domain.user
 
 import com.seongenie.example.domain.infra.BaseEntity
 import javax.persistence.Entity

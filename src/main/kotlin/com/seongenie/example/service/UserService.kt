@@ -1,11 +1,9 @@
 package com.seongenie.example.service
 
-import com.fasterxml.jackson.databind.util.BeanUtil
 import com.seongenie.example.controller.user.UserView
-import com.seongenie.example.domain.User
-import com.seongenie.example.domain.UserRepository
+import com.seongenie.example.domain.user.User
+import com.seongenie.example.domain.user.UserRepository
 import com.seongenie.example.domain.infra.BaseService
-import org.springframework.beans.BeanUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

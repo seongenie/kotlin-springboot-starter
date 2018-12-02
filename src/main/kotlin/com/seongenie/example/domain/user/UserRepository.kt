@@ -1,4 +1,4 @@
-package com.seongenie.example.domain
+package com.seongenie.example.domain.user
 
 import com.seongenie.example.domain.infra.BaseRepository
 import org.springframework.stereotype.Repository
@@ -6,7 +6,6 @@ import javax.persistence.TypedQuery
 import javax.persistence.criteria.CriteriaQuery
 import javax.persistence.criteria.Predicate
 import javax.persistence.criteria.Root
-
 
 @Repository
 class UserRepository : BaseRepository<User>() {

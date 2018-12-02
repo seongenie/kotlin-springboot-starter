@@ -1,5 +1,5 @@
 package com.seongenie.example.collector.infra
 
-interface Crawler {
-  open fun crawl()
+interface Crawler<T> {
+  open fun crawl(text: String, success: ((T) -> Unit))
 }

@@ -1,6 +1,6 @@
 package com.seongenie.example.controller.user
 
-import com.seongenie.example.domain.User
+import com.seongenie.example.domain.user.User
 import org.springframework.beans.BeanUtils
 import java.io.Serializable
 

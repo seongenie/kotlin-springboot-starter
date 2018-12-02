@@ -6,9 +6,10 @@ import javax.persistence.Entity
 import javax.persistence.Table
 import javax.persistence.UniqueConstraint
 
-@Table(uniqueConstraints = [(UniqueConstraint(columnNames = ["id"]))])
-@Entity
+//@Table(uniqueConstraints = [(UniqueConstraint(columnNames = ["id"]))])
+//@Entity
 data class NaverStore (
+        @SerializedName("id") var id: String? = null,
         @SerializedName("title") var title: String? = null,
         @SerializedName("link") var link: String? = null,
         @SerializedName("category") var category: String? = null,
@@ -18,4 +19,5 @@ data class NaverStore (
         @SerializedName("roadAddress") var roadAddress: String? = null,
         @SerializedName("mapx") var mapx: String? = null,
         @SerializedName("mapy") var mapy: String? = null
-): BaseEntity()
+)
+//  : BaseEntity()

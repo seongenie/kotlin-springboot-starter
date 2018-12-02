@@ -9,6 +9,7 @@ interface NaverAPI {
 
   @GET("search/local.json")
   fun getStores(@Query("query") query: String,
-                @Query("display") display: Int = 10): Observable<NaverSearchResult>
+                @Query("display") display: Int = 30,
+                @Query("start") start: Int = 1): Observable<NaverSearchResult>
 }
 

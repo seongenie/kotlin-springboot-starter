@@ -1,5 +1,6 @@
 package com.seongenie.example.service
 
+import com.seongenie.example.collector.infra.ESRequestHelper
 import com.seongenie.example.domain.infra.BaseService
 import com.seongenie.example.domain.naver.NaverStore
 import com.seongenie.example.domain.naver.NaverStoreRepository
@@ -12,9 +13,13 @@ class NaverStoreService: BaseService() {
   @Autowired
   lateinit var repository: NaverStoreRepository
 
+  @Autowired
+  lateinit var esRequestHelper: ESRequestHelper
 
-  fun insertNaverStore(naverStore: NaverStore) {
-    repository.add(naverStore)
+
+  fun insertNaverStore(naverStore: NaverStore, type: String) {
+    esRequestHelper.indexRequest(naverStore, type)
+//    repository.add(naverStore)
   }
 
   fun getNaverStores(): List<NaverStore> {

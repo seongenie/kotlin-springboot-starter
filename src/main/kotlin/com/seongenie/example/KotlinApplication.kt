@@ -1,6 +1,5 @@
 package com.seongenie.example
 
-import com.seongenie.example.collector.naver.NaverStoreCrawler
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.domain.EntityScan

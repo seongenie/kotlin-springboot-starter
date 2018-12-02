@@ -1,5 +1,6 @@
 package com.seongenie.example.domain.infra
 
+import com.google.gson.annotations.SerializedName
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.util.*
@@ -12,6 +13,7 @@ abstract class BaseEntity {
 
     @Id
     @GeneratedValue
+    @SerializedName("id")
     var id : Long? = null
 
     @field:CreationTimestamp

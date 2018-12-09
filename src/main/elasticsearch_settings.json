@@ -1,0 +1,81 @@
+PUT taste
+{
+  "settings" : {
+    "index" : {
+      "number_of_shards" : "5",
+      "provided_name" : "taste",
+      "creation_date" : "1543735682118",
+      "analysis" : {
+        "analyzer" : {
+          "my_analyzer" : {
+            "type" : "custom",
+            "tokenizer" : "nori_user_dict"
+          }
+        },
+        "tokenizer" : {
+          "nori_user_dict" : {
+            "type" : "nori_tokenizer",
+            "user_dictionary" : "userdict_ko.txt",
+            "decompound_mode" : "mixed"
+          }
+        }
+      },
+      "number_of_replicas" : "1",
+      "uuid" : "PxYgxATRQU6oXWD2VHVERQ",
+      "version" : {
+        "created" : "6050099"
+      }
+    }
+  }
+}
+
+PUT taste/_mapping/store
+{
+  "store" : {
+    "properties" : {
+      "title" : {
+        "type" : "string",
+        "analyzer": "my_analyzer"
+        
+      },
+      "category" : {
+        "type" : "string",
+        "analyzer" : "my_analyzer"
+      },
+      "description" : {
+        "type": "my_analyzer",
+        "analyzer" : "my_analyzer"
+      },
+      "address" : {
+        "type" : "string",
+        "analyzer" : "my_analyzer"
+      }
+    }
+  }
+}
+
+//둘다 맞으면 OK
+GET taste/store/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"match": {"category": "치킨"}},
+        {"match": {"address": "수원"}}
+      ]
+    }
+  }
+}
+
+// 둘중 하나라도 맞으면 OK
+GET taste/store/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {"match": {"category": "치킨"}},
+        {"match": {"address": "수원"}}
+      ]
+    }
+  }
+}

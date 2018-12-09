@@ -1,4 +1,4 @@
-package com.seongenie.example.collector.naver
+package com.seongenie.example.index.naver
 
 import io.reactivex.Observable
 import retrofit2.http.GET

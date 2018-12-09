@@ -1,4 +1,4 @@
-package com.seongenie.example.collector.infra
+package com.seongenie.example.index.infra
 
 import org.elasticsearch.index.query.QueryBuilder
 import org.elasticsearch.index.query.QueryBuilders

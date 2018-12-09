@@ -1,4 +1,4 @@
-package com.seongenie.example.collector.infra
+package com.seongenie.example.index.infra
 
 import retrofit2.Call
 import retrofit2.Callback

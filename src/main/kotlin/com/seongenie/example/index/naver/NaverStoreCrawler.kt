@@ -1,6 +1,6 @@
-package com.seongenie.example.collector.naver
+package com.seongenie.example.index.naver
 
-import com.seongenie.example.collector.infra.Crawler
+import com.seongenie.example.index.infra.Crawler
 import io.reactivex.schedulers.Schedulers
 import org.elasticsearch.client.RestHighLevelClient
 

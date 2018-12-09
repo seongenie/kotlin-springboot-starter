@@ -1,4 +1,4 @@
-package com.seongenie.example.collector.infra
+package com.seongenie.example.index.infra
 
 import com.google.gson.Gson
 import com.seongenie.example.infra.ElasticsearchConfig

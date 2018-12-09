@@ -1,10 +1,10 @@
 package com.seongenie.example.controller.elasticsearch
 
 import com.google.gson.Gson
-import com.seongenie.example.collector.infra.ESQueryHelper
-import com.seongenie.example.collector.infra.ESRequestHelper
-import com.seongenie.example.collector.infra.SearchRequest
-import com.seongenie.example.collector.naver.NaverStoreCrawler
+import com.seongenie.example.index.infra.ESQueryHelper
+import com.seongenie.example.index.infra.ESRequestHelper
+import com.seongenie.example.index.infra.SearchRequest
+import com.seongenie.example.index.naver.NaverStoreCrawler
 import com.seongenie.example.domain.naver.NaverStore
 import com.seongenie.example.service.NaverStoreService
 import org.elasticsearch.client.RequestOptions

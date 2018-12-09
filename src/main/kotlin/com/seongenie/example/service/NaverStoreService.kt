@@ -1,6 +1,6 @@
 package com.seongenie.example.service
 
-import com.seongenie.example.collector.infra.ESRequestHelper
+import com.seongenie.example.index.infra.ESRequestHelper
 import com.seongenie.example.domain.infra.BaseService
 import com.seongenie.example.domain.naver.NaverStore
 import com.seongenie.example.domain.naver.NaverStoreRepository

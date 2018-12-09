@@ -1,4 +1,4 @@
-package com.seongenie.example.collector.naver
+package com.seongenie.example.index.naver
 
 import com.google.gson.annotations.SerializedName
 import com.seongenie.example.domain.naver.NaverStore

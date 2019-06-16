@@ -48,7 +48,7 @@ dependencies {
     // RxKotlin
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     // ElasticSearch REST API
-    implementation 'org.elasticsearch:elasticsearch:6.5.0'
-    implementation 'org.elasticsearch.client:elasticsearch-rest-high-level-client:6.5.0'
-    implementation 'org.elasticsearch.client:transport:6.5.0'
+    implementation 'org.elasticsearch:elasticsearch:7.1.0'
+    implementation 'org.elasticsearch.client:elasticsearch-rest-high-level-client:7.1.0'
+    implementation 'org.elasticsearch.client:transport:7.1.0'
 }

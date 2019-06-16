@@ -17,8 +17,8 @@ class NaverStoreService: BaseService() {
   lateinit var esRequestHelper: ESRequestHelper
 
 
-  fun insertNaverStore(naverStore: NaverStore, type: String) {
-    esRequestHelper.indexRequest(naverStore, type)
+  fun insertNaverStore(naverStore: NaverStore) {
+    esRequestHelper.indexRequest(naverStore)
 //    repository.add(naverStore)
   }
 

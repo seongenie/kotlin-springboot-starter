@@ -9,8 +9,8 @@ data class NaverSearchResult (
         @SerializedName("link") var link: String? = null,
         @SerializedName("description") var description: String? = null,
         @SerializedName("lastBuildDate") var lastBuildDate: String? = null,
-        @SerializedName("total") var total: Int? = null,
-        @SerializedName("start") var start: Int? = null,
+        @SerializedName("total") var total: Int,
+        @SerializedName("start") var start: Int,
         @SerializedName("display") var display: Int? = null,
         @SerializedName("items") var items: List<NaverStore>? = null
 ): Serializable

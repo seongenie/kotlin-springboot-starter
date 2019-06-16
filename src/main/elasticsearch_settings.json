@@ -1,53 +1,44 @@
+// 인덱스 생성
 PUT taste
 {
-  "settings" : {
-    "index" : {
-      "number_of_shards" : "5",
-      "provided_name" : "taste",
-      "creation_date" : "1543735682118",
-      "analysis" : {
-        "analyzer" : {
-          "my_analyzer" : {
-            "type" : "custom",
-            "tokenizer" : "nori_user_dict"
+  "settings": {
+    "index": {
+      "analysis": {
+        "tokenizer": {
+          "nori_user_dict": {
+            "type": "nori_tokenizer",
+            "decompound_mode": "mixed",
+            "user_dictionary": "userdict_ko.txt"
           }
         },
-        "tokenizer" : {
-          "nori_user_dict" : {
-            "type" : "nori_tokenizer",
-            "user_dictionary" : "userdict_ko.txt",
-            "decompound_mode" : "mixed"
+        "analyzer": {
+          "my_analyzer": {
+            "type": "custom",
+            "tokenizer": "nori_user_dict"
           }
         }
       },
-      "number_of_replicas" : "1",
-      "uuid" : "PxYgxATRQU6oXWD2VHVERQ",
-      "version" : {
-        "created" : "6050099"
-      }
+      "number_of_shards" : "5",
+      "number_of_replicas" : "1"
     }
-  }
-}
-
-PUT taste/_mapping/store
-{
-  "store" : {
+  },
+  "mappings": {
     "properties" : {
       "title" : {
-        "type" : "string",
+        "type" : "text",
         "analyzer": "my_analyzer"
-        
+
       },
       "category" : {
-        "type" : "string",
+        "type" : "text",
         "analyzer" : "my_analyzer"
       },
       "description" : {
-        "type": "my_analyzer",
+        "type": "text",
         "analyzer" : "my_analyzer"
       },
       "address" : {
-        "type" : "string",
+        "type" : "text",
         "analyzer" : "my_analyzer"
       }
     }
@@ -55,7 +46,7 @@ PUT taste/_mapping/store
 }
 
 //둘다 맞으면 OK
-GET taste/store/_search
+GET taste/_search
 {
   "query": {
     "bool": {
@@ -68,13 +59,37 @@ GET taste/store/_search
 }
 
 // 둘중 하나라도 맞으면 OK
-GET taste/store/_search
+GET taste/_search
 {
   "query": {
     "bool": {
       "should": [
         {"match": {"category": "치킨"}},
         {"match": {"address": "수원"}}
+      ]
+    }
+  }
+}
+
+
+// 모두 제거
+POST taste/_delete_by_query
+{
+  "query": {
+    "match_all": {
+    }
+  }
+}
+
+GET taste/_search
+{
+  "track_total_hits": 30,
+  "from": 0,
+  "size": 6,
+  "query": {
+    "bool": {
+      "must": [
+        {"match": {"title": "도미노"}}
       ]
     }
   }

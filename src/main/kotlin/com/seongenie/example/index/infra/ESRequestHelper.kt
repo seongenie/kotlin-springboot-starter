@@ -35,26 +35,25 @@ class ESRequestHelper {
   /**
    * Return indexRequest
    */
-  fun indexRequest(any: Any, type: String): IndexRequest {
+  fun indexRequest(any: Any): IndexRequest {
     val jsonString = Gson().toJson(any)
-    return IndexRequest(config.index, type).source(jsonString, XContentType.JSON)
+    return IndexRequest(config.index).source(jsonString, XContentType.JSON)
   }
 
   /**
    * Return SearchRequest
    */
-  fun searchRequest(query: QueryBuilder): SearchRequest {
-    val searchSourceBuilder = SearchSourceBuilder().query(query)
+  fun searchRequest(query: QueryBuilder, size: Int = 10): SearchRequest {
+    val searchSourceBuilder = SearchSourceBuilder().query(query).size(size);
     return SearchRequest().source(searchSourceBuilder)
   }
 
   /**
    * Return BulkRequest object which request numbers of index at once
    */
-  fun bulkIndexRequest(list: List<Any>, type: String): BulkRequest {
-    val client = createClient()
+  fun bulkIndexRequest(list: List<Any>): BulkRequest {
     val bulkRequest = BulkRequest()
-    list.forEach { bulkRequest.add(indexRequest(it, type)) }
+    list.forEach { bulkRequest.add(indexRequest(it)) }
     return bulkRequest
   }
 }

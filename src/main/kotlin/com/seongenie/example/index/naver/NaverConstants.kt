@@ -1,4 +1,5 @@
 package com.seongenie.example.index.naver
 
-class NaverConstants {
+object NaverConstants {
+  val DISPLAY: Int = 30
 }

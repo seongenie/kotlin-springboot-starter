@@ -6,6 +6,7 @@ import com.seongenie.example.index.infra.ESRequestHelper
 import com.seongenie.example.index.infra.SearchRequest
 import com.seongenie.example.index.naver.NaverStoreCrawler
 import com.seongenie.example.domain.naver.NaverStore
+import com.seongenie.example.index.naver.NaverConstants
 import com.seongenie.example.service.NaverStoreService
 import org.elasticsearch.client.RequestOptions
 import org.springframework.beans.factory.annotation.Autowired
@@ -31,10 +32,16 @@ class ESController {
   fun crawlNaverStore(@RequestParam("text") text: String) {
     val client = esRequestHelper.createClient()
     var crawler = NaverStoreCrawler(client)
-    crawler.crawl(text) { it ->
-      val bulkRequest = esRequestHelper.bulkIndexRequest(it.items!!, "store")
+
+    var start = 1
+    var total = NaverConstants.DISPLAY + 1
+
+    crawler.crawl(text, start) { it ->
+      val bulkRequest = esRequestHelper.bulkIndexRequest(it.items!!)
       val response = client.bulk(bulkRequest, RequestOptions.DEFAULT)
     }
+
+
   }
 
   /**
@@ -51,13 +58,14 @@ class ESController {
   @RequestMapping(value = "/stores/search", method = [RequestMethod.POST])
   fun searchNaverStore(@RequestBody request: SearchRequest): List<NaverStore> {
     val query = esQueryHelper.simpleMatchQuery(request)
-    val searchRequest = esRequestHelper.searchRequest(query)
+    val searchRequest = esRequestHelper.searchRequest(query, request.size)
     val client = esRequestHelper.createClient()
     var searchResult = listOf<NaverStore>()
     val gson = Gson()
     try {
       val response = client.search(searchRequest, RequestOptions.DEFAULT)
       searchResult = response.hits.hits.map { it ->
+//        System.out.println(it.sourceAsString)
         val result = gson.fromJson(it.sourceAsString, NaverStore::class.java)
         result.id = it.id
         result
